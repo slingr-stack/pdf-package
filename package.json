@@ -1,0 +1,31 @@
+{
+    "name": "pdf",
+    "label": "PDF Package",
+    "dependencies": [
+        {
+            "type": "service",
+            "name": "pdf",
+            "version": "v1.0.0",
+            "instanceId": "dedicated"
+        }
+    ],
+    "configuration": [],
+    "events": [
+        {
+            "label": "PDF Response",
+            "name": "pdfResponse"
+        }
+    ],
+    "metadata": [
+        {
+            "type": "script",
+            "namespace": "functions",
+            "path": "/scripts/functions.js"
+        },
+        {
+            "type": "flowStep",
+            "namespace": "generatePDFPdfGenerator",
+            "path": "/flowSteps/generatePDFPdfGenerator"
+        }
+    ]
+}
