@@ -1,20 +1,3 @@
-<table class="table" style="margin-top: 10px">
-    <thead>
-    <tr>
-        <th>Title</th>
-        <th>Last Updated</th>
-        <th>Summary</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>PDF package</td>
-        <td>December 4, 2023</td>
-        <td>Detailed description of the API of the PDF package.</td>
-    </tr>
-    </tbody>
-</table>
-
 
 ## Overview
 
@@ -63,6 +46,11 @@ You can set specific properties in document.
 
 **footerData** data used in footer template.
 
+**imageDpi:** when embedding images scale them down to this dpi. Default value is `600`. You can check `wkhtmltopdf` for more options.
+
+**imageQuality:** when jpeg compressing images use this quality.  Default value is `94`. You can check `wkhtmltopdf` for more options.
+
+**lowquality:** generates lower quality pdf/ps. Useful to shrink the result document space. Default value is `false`. You can check `wkhtmltopdf` for more options.
 
 ## Generated PDF
 
@@ -145,7 +133,7 @@ var settings = {
     footerData: footerData
 };
 
-var res = pkg.pdf.functions.generatePdf(tpl, data, settings, {record: record}, {
+var res = pkg.pdf.generatePdf(tpl, data, settings, {record: record}, {
     pdfResponse: function(res, resData){
         
         var data = res.data;
@@ -179,7 +167,7 @@ Given a PDF list, return a PDF file with merged pages that are specified in argu
 
 ```js
 
-pkg.pdf.functions.mergeDocuments([
+pkg.pdf.mergeDocuments([
       { 'file': '5a537d6ad6671c33a238519a', 'start': 1, 'end': 1 },
       { 'file': '5a537d6dd6671c33a238519e', 'start': 32, 'end': 33 },
       { 'file': '5a537d71d6671c33a23851a2', 'start': 2, 'end': 2 }
@@ -213,7 +201,7 @@ Given a PDF file and an interval return a list of PDF files split.
 
 ```js
 
-pkg.pdf.functions.splitDocument('5ad8a06ca0be513068b65dee', 2, { record: record }, {
+pkg.pdf.splitDocument('5ad8a06ca0be513068b65dee', 2, { record: record }, {
     'pdfResponse': function(res, resData) {
   
         var data = res.data;
@@ -275,7 +263,7 @@ Given a PDF file, you can replace its header and footer using images or html tem
       }
     };
     
-    pkg.pdf.functions.replaceHeaderAndFooter(fileId, settings, {record: record}, {
+    pkg.pdf.replaceHeaderAndFooter(fileId, settings, {record: record}, {
       pdfResponse: function(res, resData){
     
         var data = res.data;
@@ -330,7 +318,7 @@ Given a PDF file, you can replace its header and footer using images or html tem
       }
     };
     
-    pkg.pdf.functions.replaceHeaderAndFooter(fileId, settings, {record: record}, {
+    pkg.pdf.replaceHeaderAndFooter(fileId, settings, {record: record}, {
       pdfResponse: function(res, resData){
     
         var data = res.data;
@@ -384,7 +372,7 @@ var settings = {
     }
   }
 };
-pkg.pdf.functions.fillForm(fileId, settings, {record: record}, {
+pkg.pdf.fillForm(fileId, settings, {record: record}, {
       pdfResponse: function(res, resData){
         var data = res.data;
         var document = resData.record;
@@ -406,7 +394,7 @@ You can call to fill form in synchronized way using equivalent method `fillFormS
 
 ```javascript
 // same settings than async method
-pkg.pdf.functions.fillFormSync(fileId, settings, {record: record}, {
+pkg.pdf.fillFormSync(fileId, settings, {record: record}, {
       pdfResponse: function(res, resData){
         //...
       }
@@ -440,7 +428,7 @@ var settings = {
       { index: 1, fileId: record.field('image2').id() }
     ]
 }; 
-pkg.pdf.functions.replaceImages(fileId, settings, {record: record}, {
+pkg.pdf.replaceImages(fileId, settings, {record: record}, {
     pdfResponse: function(res, resData) {
       var data = res.data;
       var document = resData.record;
@@ -494,7 +482,7 @@ var settings = {
       { pageIndex: 1, fileId: record.field('image2').id(), x: 20, y: 20, width: 400, height: 300 }
     ]
 }; 
-pkg.pdf.functions.addImages(fileId, settings, {record: record}, {
+pkg.pdf.addImages(fileId, settings, {record: record}, {
     pdfResponse: function(res, resData) {
       var data = res.data;
       var document = resData.record;
@@ -524,7 +512,7 @@ This can't be greater than 600. Required.
 
 ```js
 
-pkg.pdf.functions.convertPdfToImages(['8ko8a06ca0be213068b65dee', '89osa06ca0be513068b2fgcg'], 72, { record: record }, {
+pkg.pdf.convertPdfToImages(['8ko8a06ca0be213068b65dee', '89osa06ca0be513068b2fgcg'], 72, { record: record }, {
     'pdfResponse': function(res, resData) {
   
         var data = res.data;
@@ -570,7 +558,7 @@ pkg.pdf.functions.convertPdfToImages(['8ko8a06ca0be213068b65dee', '89osa06ca0be5
 ```
 
 ## Dependencies
-* PDF Service (Latest Version)
+* PDF Service (v1.1.6)
 
 # About SLINGR
 

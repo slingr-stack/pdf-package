@@ -34,7 +34,7 @@ exports.generatePdf = function(template, data, settings, callbackData, callbacks
         sys.logs.error('Invalid argument received. This helper should receive the following parameters as non-empty strings: [template,data].');
         return;
     }
-    sys.logs.debug('[pdf-generator] from: generatePdf');
+    sys.logs.debug('[pdf] from: generatePdf');
     let options = {template: template, data: data, settings: settings};
     return pdfService.generatePdf(options, callbackData, callbacks);
 };
@@ -50,7 +50,7 @@ exports.mergeDocuments = function(documents, callbackData, callbacks) {
             throw 'Invalid document settings for ' + JSON.stringify(doc);
         }
     }
-    sys.logs.debug('[pdf-generator] from: mergeDocuments');
+    sys.logs.debug('[pdf] from: mergeDocuments');
     let options = {documents: documents};
     return pdfService.mergeDocuments(options, callbackData, callbacks);
 };
@@ -60,7 +60,7 @@ exports.splitDocument = function(fileId, interval, callbackData, callbacks) {
         sys.logs.error('Invalid argument received. This helper should receive the following parameters as non-empty strings: [fileId,interval].');
         return;
     }
-    sys.logs.debug('[pdf-generator] from: splitDocument');
+    sys.logs.debug('[pdf] from: splitDocument');
     let options = {fileId: fileId, interval: interval};
     return pdfService.splitDocument(options, callbackData, callbacks);
 };
@@ -70,7 +70,7 @@ exports.replaceHeaderAndFooter = function(fileId, settings, callbackData, callba
         sys.logs.error('Invalid argument received. This helper should receive the following parameters as non-empty strings: [fileId,settings].');
         return;
     }
-    sys.logs.debug('[pdf-generator] from: replaceHeaderAndFooter');
+    sys.logs.debug('[pdf] from: replaceHeaderAndFooter');
     let options = {fileId: fileId, settings: settings};
     return pdfService.replaceHeaderAndFooter(options, callbackData, callbacks);
 };
@@ -80,7 +80,7 @@ exports.fillForm = function(fileId, settings, callbackData, callbacks) {
         sys.logs.error('Invalid argument received. This helper should receive the following parameters as non-empty strings: [fileId].');
         return;
     }
-    sys.logs.debug('[pdf-generator] from: fillForm');
+    sys.logs.debug('[pdf] from: fillForm');
     let options = {fileId: fileId, settings: settings || {}};
     return pdfService.fillForm(options, callbackData, callbacks);
 };
@@ -90,7 +90,7 @@ exports.fillFormSync = function(fileId, settings, callbackData, callbacks) {
         sys.logs.error('Invalid argument received. This helper should receive the following parameters as non-empty strings: [fileId].');
         return;
     }
-    sys.logs.debug('[pdf-generator] from: fillFormSync');
+    sys.logs.debug('[pdf] from: fillFormSync');
     let options = {fileId: fileId, sync: true, settings: settings || {}};
     return pdfService.fillFormSync(options, callbackData, callbacks);
 };
@@ -100,7 +100,7 @@ exports.replaceImages = function(fileId, settings, callbackData, callbacks) {
         sys.logs.error('Invalid argument received. This helper should receive the following parameters as non-empty strings: [fileId].');
         return;
     }
-    sys.logs.debug('[pdf-generator] from: replaceImages');
+    sys.logs.debug('[pdf] from: replaceImages');
     let options = {fileId: fileId, settings: settings || {}};
     return pdfService.replaceImages(options, callbackData, callbacks);
 };
@@ -110,7 +110,7 @@ exports.addImages = function(fileId, settings, callbackData, callbacks) {
         sys.logs.error('Invalid argument received. This helper should receive the following parameters as non-empty strings: [fileId].');
         return;
     }
-    sys.logs.debug('[pdf-generator] from: addImages');
+    sys.logs.debug('[pdf] from: addImages');
     let options = {fileId: fileId, settings: settings || {}};
     return pdfService.addImages(options, callbackData, callbacks);
 };
@@ -120,7 +120,7 @@ exports.convertPdfToImages = function(fileIds, dpi, settings, callbackData, call
         sys.logs.error('Invalid argument received. This helper should receive the following parameters as non-empty strings: [fileIds,dpi].');
         return;
     }
-    sys.logs.debug('[pdf-generator] from: convertPdfToImages');
+    sys.logs.debug('[pdf] from: convertPdfToImages');
     let options = {fileIds: fileIds, dpi: dpi, settings: settings || {}};
     return pdfService.convertPdfToImages(options, callbackData, callbacks);
 };
