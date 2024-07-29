@@ -1,5 +1,7 @@
 
-## Overview
+# Overview
+
+Repo: [https://github.com/slingr-stack/pdf-package](https://github.com/slingr-stack/pdf-package)
 
 The PDF Generator package allows creating a PDF given an HTML using `wkhtmltopdf`.
 Some of the features supported by this package are:
