@@ -568,6 +568,28 @@ pkg.pdf.convertPdfToImages(['8ko8a06ca0be213068b65dee', '89osa06ca0be513068b2fgc
 */
 ```
 
+## Convert PDF to text
+
+This feature allows the conversion of a PDF file to text by sending the file ID as a setting parameter. The resulting text will be extracted from the provided PDF and returned as a response.
+
+**fileId:** The ID of the PDF file to be converted. Required.
+
+```js
+
+pkg.pdf.convertPdfToText('5ad8a06ca0be513068b65dee', { record: record }, {
+  'pdfResponse': function(res, resData) {
+
+    var data = res.data;
+    var document = resData.record;
+
+    if(data && data.status == "ok") {
+      document.field('extractedText').val(data.pdfText);
+      sys.data.save(document);
+    }
+  }
+});
+```
+
 ## Dependencies
 * PDF Service (v1.1.6)
 

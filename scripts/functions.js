@@ -26,6 +26,8 @@ exports.addImages = {};
 
 exports.convertPdfToImages = {};
 
+exports.convertPdfToText = {};
+
 exports.generatePdf = function(template, data, settings, callbackData, callbacks) {
     if (!settings || typeof settings != 'object') {
         settings = {};
@@ -123,4 +125,14 @@ exports.convertPdfToImages = function(fileIds, dpi, settings, callbackData, call
     sys.logs.debug('[pdf] from: convertPdfToImages');
     let options = {fileIds: fileIds, dpi: dpi, settings: settings || {}};
     return pdfService.convertPdfToImages(options, callbackData, callbacks);
+};
+
+exports.convertPdfToText = function(fileId, callbackData, callbacks) {
+    if (!fileId) {
+        sys.logs.error('Invalid argument received. This helper should receive the following parameters as non-empty strings: [fileId].');
+        return;
+    }
+    sys.logs.debug('[pdf] from: convertPdfToText');
+    let options = {fileId: fileId};
+    return pdfService.convertPdfToText(options, callbackData, callbacks);
 };
