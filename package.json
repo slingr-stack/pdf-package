@@ -5,7 +5,7 @@
         {
             "type": "service",
             "name": "pdf",
-            "version": "v1.1.8",
+            "version": "v1.2.0",
             "instanceId": "dedicated"
         }
     ],
